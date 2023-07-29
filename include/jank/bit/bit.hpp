@@ -2,60 +2,77 @@
 #define JANK_BIT
 
 namespace jank::bit {
-inline int LSB(unsigned int x) {
+inline int lsb(unsigned int x) {
 #if defined(__GNUC__)
     return __builtin_ctz(x);
+#else
+    #error
 #endif
 }
 
-inline int LSB(unsigned long x) {
+inline int lsb(unsigned long x) {
 #if defined(__GNUC__)
     return __builtin_ctzl(x);
+#else
+    #error
 #endif
 }
 
-inline int LSB(unsigned long long x) {
+inline int lsb(unsigned long long x) {
 #if defined(__GNUC__)
     return __builtin_ctzll(x);
+#else
+    #error
 #endif
 }
 
-inline int MSB(unsigned int x) {
+inline int msb(unsigned int x) {
 #if defined(__GNUC__)
     return __builtin_clz(x);
+#else
+    #error
 #endif
 }
 
-inline int MSB(unsigned long x) {
+inline int msb(unsigned long x) {
 #if defined(__GNUC__)
     return __builtin_clzl(x);
+#else
+    #error
 #endif
 }
 
-inline int MSB(unsigned long long x) {
+inline int msb(unsigned long long x) {
 #if defined(__GNUC__)
     return __builtin_clzll(x);
+#else
+    #error
 #endif
 }
 
 inline int popcount(unsigned int x) {
 #if defined(__GNUC__)
     return __builtin_popcount(x);
+#else
+    #error
 #endif
 }
 
 inline int popcount(unsigned long x) {
 #if defined(__GNUC__)
     return __builtin_popcountl(x);
+#else
+    #error
 #endif
 }
 
 inline int popcount(unsigned long long x) {
 #if defined(__GNUC__)
     return __builtin_popcountll(x);
+#else
+    #error
 #endif
 }
-
 } // namespace jank::bit
 
 #endif
