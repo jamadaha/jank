@@ -59,7 +59,7 @@ inline int lsb(uint64_t x) {
 */
 inline int msb(uint16_t x) {
 #if defined(__GNUC__)
-    assert(sizeof(unsigned int) == 4);
+    static_assert(sizeof(unsigned int) == 4);
     return 31 ^ __builtin_clz(x);
 #else
 #error
@@ -75,7 +75,7 @@ inline int msb(uint16_t x) {
 inline int msb(uint32_t x) {
 #if defined(__GNUC__)
 #if __x86_64__ || __ppc64__
-    assert(sizeof(unsigned long) == 8);
+    static_assert(sizeof(unsigned long) == 8);
     return 63 ^ __builtin_clzl(x);
 #else
     assert(sizeof(unsigned long) == 4);
@@ -94,7 +94,7 @@ inline int msb(uint32_t x) {
 */
 inline int msb(uint64_t x) {
 #if defined(__GNUC__)
-    assert(sizeof(unsigned long long) == 8);
+    static_assert(sizeof(unsigned long long) == 8);
     return 63 ^ __builtin_clzll(x);
 #else
 #error
