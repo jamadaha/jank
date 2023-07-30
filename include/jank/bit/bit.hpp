@@ -1,76 +1,81 @@
 #ifndef JANK_BIT
 #define JANK_BIT
 
+#include <cstdint>
+#include <cassert>
 namespace jank::bit {
-inline int lsb(unsigned int x) {
+inline int lsb(uint16_t x) {
 #if defined(__GNUC__)
     return __builtin_ctz(x);
 #else
-    #error
+#error
 #endif
 }
 
-inline int lsb(unsigned long x) {
+inline int lsb(uint32_t x) {
 #if defined(__GNUC__)
     return __builtin_ctzl(x);
 #else
-    #error
+#error
 #endif
 }
 
-inline int lsb(unsigned long long x) {
+inline int lsb(uint64_t x) {
 #if defined(__GNUC__)
     return __builtin_ctzll(x);
 #else
-    #error
+#error
 #endif
 }
 
-inline int msb(unsigned int x) {
+inline int msb(uint16_t x) {
 #if defined(__GNUC__)
-    return __builtin_clz(x);
+    assert(sizeof(unsigned int) == 4);
+    return 31 ^ __builtin_clz(x);
 #else
-    #error
+#error
 #endif
 }
 
-inline int msb(unsigned long x) {
+inline int msb(uint32_t x) {
 #if defined(__GNUC__)
-    return __builtin_clzl(x);
+    assert(sizeof(unsigned long) == 8);
+    return 63 ^ __builtin_clzl(x);
 #else
-    #error
+#error
 #endif
 }
 
-inline int msb(unsigned long long x) {
+inline int msb(uint64_t x) {
 #if defined(__GNUC__)
-    return __builtin_clzll(x);
+    assert(sizeof(unsigned long long) == 8);
+    return 63 ^ __builtin_clzll(x);
 #else
-    #error
+#error
 #endif
 }
 
-inline int popcount(unsigned int x) {
+inline int popcount(uint16_t x) {
 #if defined(__GNUC__)
     return __builtin_popcount(x);
 #else
-    #error
+#error
 #endif
 }
 
-inline int popcount(unsigned long x) {
+inline int popcount(uint32_t x) {
 #if defined(__GNUC__)
     return __builtin_popcountl(x);
 #else
-    #error
+#error
 #endif
 }
 
-inline int popcount(unsigned long long x) {
+inline int popcount(uint64_t x) {
 #if defined(__GNUC__)
     return __builtin_popcountll(x);
 #else
-    #error
+#error
 #endif
 }
 } // namespace jank::bit

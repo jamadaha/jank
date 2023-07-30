@@ -10,10 +10,13 @@ set(INCLUDE_DIR include/jank/)
 set(JANK_HEADERS 
 	${INCLUDE_DIR}/bit/bit.hpp)
 
-add_library(jank ${JANK_HEADERS} ${DOCTEST})
+add_library(jank ${JANK_HEADERS})
 set_target_properties(jank PROPERTIES LINKER_LANGUAGE CXX)
 target_include_directories(jank PUBLIC include third_party)
 
-add_executable(test_runner test_runner.cpp ${DOCTEST})
+set(JANK_TEST_HEADERS
+    ${INCLUDE_DIR}/bit/bit.test.hpp)
+
+add_executable(test_runner test_runner.cpp ${JANK_TEST_HEADERS} ${DOCTEST})
 target_include_directories(test_runner PRIVATE third_party)
 target_link_libraries(test_runner PUBLIC jank)
