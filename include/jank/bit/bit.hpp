@@ -48,6 +48,42 @@ inline int lsb(uint64_t x) {
 }
 
 /**
+* @brief Returns the number of trailing 0-bits in x, starting from the least significant bit, and removes said bit
+* @param x A non-zero unsigned 64 bit number
+* @example ...01 -> 0 
+* @example ...10 -> 1
+*/
+inline int lsb_pop(uint16_t &x) {
+    const int t = lsb(x);
+    x ^= 1 << t;
+    return t;
+}
+
+/**
+* @brief Returns the number of trailing 0-bits in x, starting from the least significant bit, and removes said bit
+* @param x A non-zero unsigned 32 bit number
+* @example ...01 -> 0 
+* @example ...10 -> 1
+*/
+inline int lsb_pop(uint32_t &x) {
+    const int t = lsb(x);
+    x ^= 1 << t;
+    return t;
+}
+
+/**
+* @brief Returns the number of trailing 0-bits in x, starting from the least significant bit, and removes said bit
+* @param x A non-zero unsigned 16 bit number
+* @example ...01 -> 0 
+* @example ...10 -> 1
+*/
+inline int lsb_pop(uint64_t &x) {
+    const int t = lsb(x);
+    x ^= 1 << t;
+    return t;
+}
+
+/**
 * @brief Returns the number of leading 0-bits in x, starting from the most significant bit
 * @param x A non-zero unsigned 16 bit number
 * @example 10... -> 0 
