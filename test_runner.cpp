@@ -2,3 +2,4 @@
 #include <doctest/doctest.h>
 
 #include <jank/bit/bit.test.hpp>
+#include <jank/container/fixed_stack.test.hpp>

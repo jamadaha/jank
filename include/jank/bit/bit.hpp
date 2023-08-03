@@ -4,10 +4,6 @@
 #include <cassert>
 #include <cstdint>
 
-/**
-* NOTE: These are not tested on 32-bit architecture, and might(likely) not work as intended
-*/ 
-
 namespace jank::bit {
 /**
 * @brief Returns the number of trailing 0-bits in x, starting from the least significant bit
@@ -59,7 +55,6 @@ inline int lsb(uint64_t x) {
 */
 inline int msb(uint16_t x) {
 #if defined(__GNUC__)
-    static_assert(sizeof(unsigned int) == 4);
     return 31 ^ __builtin_clz(x);
 #else
 #error
@@ -75,7 +70,6 @@ inline int msb(uint16_t x) {
 inline int msb(uint32_t x) {
 #if defined(__GNUC__)
 #if __x86_64__ || __ppc64__
-    static_assert(sizeof(unsigned long) == 8);
     return 63 ^ __builtin_clzl(x);
 #else
     assert(sizeof(unsigned long) == 4);
