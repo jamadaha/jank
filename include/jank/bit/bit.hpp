@@ -11,7 +11,7 @@ namespace jank::bit {
 * @example ...01 -> 0 
 * @example ...10 -> 1
 */
-inline int lsb(uint16_t x) {
+constexpr inline int lsb(uint16_t x) {
 #if defined(__GNUC__)
     return __builtin_ctz(x);
 #else
@@ -25,7 +25,7 @@ inline int lsb(uint16_t x) {
 * @example ...01 -> 0 
 * @example ...10 -> 1
 */
-inline int lsb(uint32_t x) {
+constexpr inline int lsb(uint32_t x) {
 #if defined(__GNUC__)
     return __builtin_ctzl(x);
 #else
@@ -39,7 +39,7 @@ inline int lsb(uint32_t x) {
 * @example ...01 -> 0 
 * @example ...10 -> 1
 */
-inline int lsb(uint64_t x) {
+constexpr inline int lsb(uint64_t x) {
 #if defined(__GNUC__)
     return __builtin_ctzll(x);
 #else
@@ -53,7 +53,7 @@ inline int lsb(uint64_t x) {
 * @example ...01 -> 0 
 * @example ...10 -> 1
 */
-inline int lsb_pop(uint16_t &x) {
+constexpr inline int lsb_pop(uint16_t &x) {
     const int t = lsb(x);
     x ^= 1 << t;
     return t;
@@ -65,7 +65,7 @@ inline int lsb_pop(uint16_t &x) {
 * @example ...01 -> 0 
 * @example ...10 -> 1
 */
-inline int lsb_pop(uint32_t &x) {
+constexpr inline int lsb_pop(uint32_t &x) {
     const int t = lsb(x);
     x ^= 1 << t;
     return t;
@@ -77,7 +77,7 @@ inline int lsb_pop(uint32_t &x) {
 * @example ...01 -> 0 
 * @example ...10 -> 1
 */
-inline int lsb_pop(uint64_t &x) {
+constexpr inline int lsb_pop(uint64_t &x) {
     const int t = lsb(x);
     x ^= 1 << t;
     return t;
@@ -89,7 +89,7 @@ inline int lsb_pop(uint64_t &x) {
 * @example 10... -> 0 
 * @example 01... -> 1
 */
-inline int msb(uint16_t x) {
+constexpr inline int msb(uint16_t x) {
 #if defined(__GNUC__)
     return 31 ^ __builtin_clz(x);
 #else
@@ -103,7 +103,7 @@ inline int msb(uint16_t x) {
 * @example 10... -> 0 
 * @example 01... -> 1
 */
-inline int msb(uint32_t x) {
+constexpr inline int msb(uint32_t x) {
 #if defined(__GNUC__)
 #if __x86_64__ || __ppc64__
     return 63 ^ __builtin_clzl(x);
@@ -122,7 +122,7 @@ inline int msb(uint32_t x) {
 * @example 10... -> 0 
 * @example 01... -> 1
 */
-inline int msb(uint64_t x) {
+constexpr inline int msb(uint64_t x) {
 #if defined(__GNUC__)
     static_assert(sizeof(unsigned long long) == 8);
     return 63 ^ __builtin_clzll(x);
@@ -137,7 +137,7 @@ inline int msb(uint64_t x) {
 * @example 100... -> 1
 * @example 110... -> 2
 */
-inline int popcount(uint16_t x) {
+constexpr inline int popcount(uint16_t x) {
 #if defined(__GNUC__)
     return __builtin_popcount(x);
 #else
@@ -151,7 +151,7 @@ inline int popcount(uint16_t x) {
 * @example 100... -> 1
 * @example 110... -> 2
 */
-inline int popcount(uint32_t x) {
+constexpr inline int popcount(uint32_t x) {
 #if defined(__GNUC__)
     return __builtin_popcountl(x);
 #else
@@ -165,7 +165,7 @@ inline int popcount(uint32_t x) {
 * @example 100... -> 1
 * @example 110... -> 2
 */
-inline int popcount(uint64_t x) {
+constexpr inline int popcount(uint64_t x) {
 #if defined(__GNUC__)
     return __builtin_popcountll(x);
 #else
