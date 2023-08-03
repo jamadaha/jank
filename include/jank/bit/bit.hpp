@@ -55,7 +55,7 @@ constexpr inline int lsb(uint64_t x) {
 */
 constexpr inline int lsb_pop(uint16_t &x) {
     const int t = lsb(x);
-    x ^= 1 << t;
+    x ^= (uint16_t)1 << t;
     return t;
 }
 
@@ -67,7 +67,7 @@ constexpr inline int lsb_pop(uint16_t &x) {
 */
 constexpr inline int lsb_pop(uint32_t &x) {
     const int t = lsb(x);
-    x ^= 1 << t;
+    x ^= (uint32_t)1 << t;
     return t;
 }
 
@@ -79,7 +79,7 @@ constexpr inline int lsb_pop(uint32_t &x) {
 */
 constexpr inline int lsb_pop(uint64_t &x) {
     const int t = lsb(x);
-    x ^= 1 << t;
+    x ^= (uint64_t)1 << t;
     return t;
 }
 
