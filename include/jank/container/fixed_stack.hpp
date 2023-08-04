@@ -25,6 +25,7 @@ public:
     fixed_stack operator=(const fixed_stack &other) {
         _stack = other._stack;
         _i = other._i;
+        return *this;
     }
 
     // Capacity
