@@ -36,7 +36,7 @@ public:
 
     // Element access
     
-    const_reference at(std::size_t n) {
+    const_reference at(std::size_t n) const {
         return _stack.at(n);
     }
 
