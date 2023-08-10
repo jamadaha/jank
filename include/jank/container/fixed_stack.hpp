@@ -34,6 +34,10 @@ public:
     size_type max_size() const noexcept { return N; }
 
     // Element access
+    
+    const_reference at(std::size_t n) {
+        return _stack.at(n);
+    }
 
     reference top() {
         assert(_i > 0);
