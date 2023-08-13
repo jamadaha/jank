@@ -12,7 +12,10 @@ set(JANK_HEADERS
 	${INCLUDE_DIR}/container/fixed_stack.hpp
 	${INCLUDE_DIR}/file/file_reading.hpp)
 
-add_library(jank ${JANK_HEADERS})
+set(JANK_SRC
+    ${INCLUDE_DIR}/file/file_reading.cpp)
+
+add_library(jank ${JANK_HEADERS} ${JANK_SRC})
 set_target_properties(jank PROPERTIES LINKER_LANGUAGE CXX)
 target_include_directories(jank PUBLIC include third_party)
 
