@@ -9,7 +9,8 @@ set(INCLUDE_DIR include/jank/)
 
 set(JANK_HEADERS 
 	${INCLUDE_DIR}/bit/bit.hpp
-	${INCLUDE_DIR}/container/fixed_stack.hpp)
+	${INCLUDE_DIR}/container/fixed_stack.hpp
+	${INCLUDE_DIR}/file/file_reading.hpp)
 
 add_library(jank ${JANK_HEADERS})
 set_target_properties(jank PROPERTIES LINKER_LANGUAGE CXX)
